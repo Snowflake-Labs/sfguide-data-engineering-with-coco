@@ -1,0 +1,1 @@
+This plugin provides skills and agents for the coco-de-guide dbt project. It includes workflows for creating new dbt models against TPC-H source data in Snowflake, running builds with integrated testing, and managing the project's data transformation pipeline.

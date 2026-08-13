@@ -1,0 +1,9 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "author": { "name": "hong" },
+  "description": "Data engineering guide plugin for dbt on Snowflake with TPC-H data.",
+  "skills": ["./skills"],
+  "agents": ["./agents"],
+  "hooks": "./hooks/hooks.json"
+}
