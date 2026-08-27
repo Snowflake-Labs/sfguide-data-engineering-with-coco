@@ -1,0 +1,1 @@
+This plugin bundles the data engineering workflows for the CoCo DE guide project. It includes skills for creating dbt models, subagents for delegated tasks, and hooks for automated checks during development.

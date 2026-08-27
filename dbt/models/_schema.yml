@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: customers
+    columns:
+      - name: customer_key
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        tests:
+          - not_null
+      - name: market_segment
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AUTOMOBILE', 'BUILDING', 'FURNITURE', 'HOUSEHOLD', 'MACHINERY']
+      - name: nation
+        tests:
+          - not_null
+      - name: region
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AFRICA', 'AMERICA', 'ASIA', 'EUROPE', 'MIDDLE EAST']
+
+  - name: orders_summary
+    columns:
+      - name: order_key
+        tests:
+          - not_null
+          - unique
+      - name: customer_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('customers')
+                field: customer_key
+      - name: order_status
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['F', 'O', 'P']
+      - name: order_priority
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['1-URGENT', '2-HIGH', '3-MEDIUM', '4-NOT SPECIFIED', '5-LOW']
+      - name: order_date
+        tests:
+          - not_null
+      - name: line_item_count
+        tests:
+          - not_null
+      - name: total_quantity
+        tests:
+          - not_null
+
+  - name: supplier_performance
+    description: Performance metrics per supplier including total orders, revenue, and average discount.
+    columns:
+      - name: supplier_key
+        tests:
+          - not_null
+          - unique
+      - name: supplier_name
+        tests:
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null
+      - name: total_revenue
+        tests:
+          - not_null
+      - name: average_discount
+        tests:
+          - not_null

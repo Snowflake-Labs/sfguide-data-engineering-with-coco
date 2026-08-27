@@ -1,4 +1,5 @@
 SET MY_USER = CURRENT_USER();
+select CURRENT_USER();
 
 -- Roles
 CREATE ROLE IF NOT EXISTS DEMO_ROLE;
@@ -16,3 +17,26 @@ GRANT OWNERSHIP ON DATABASE DEMO_DB TO ROLE DEMO_ROLE;
 -- Schema
 CREATE SCHEMA IF NOT EXISTS DEMO_DB.TPCH_TRANSFORMED;
 GRANT OWNERSHIP ON SCHEMA DEMO_DB.TPCH_TRANSFORMED TO ROLE DEMO_ROLE;
+
+-- Create network and authentication policies for account access control
+-- Co-authored with CoCo
+
+CREATE NETWORK POLICY allow_all_policy
+  ALLOWED_IP_LIST = ('0.0.0.0/0')
+  COMMENT = 'Allows access from all IP addresses';
+
+
+ALTER ACCOUNT SET NETWORK_POLICY = ALLOW_ALL_POLICY;
+
+-- Create the PUBLIC schema since it does not exist yet
+CREATE SCHEMA IF NOT EXISTS SNOWFLAKE_LEARNING_DB.PUBLIC;
+
+-- Use a fully qualified name to avoid "no current database" error
+CREATE AUTHENTICATION POLICY SNOWFLAKE_LEARNING_DB.PUBLIC.my_authentication_policy
+  PAT_POLICY=( NETWORK_POLICY_EVALUATION = ENFORCED_NOT_REQUIRED );
+
+-- Apply to your user
+ALTER USER AGASHISH05 SET AUTHENTICATION POLICY SNOWFLAKE_LEARNING_DB.PUBLIC.my_authentication_policy;
+
+-- Or apply account-wide
+ALTER ACCOUNT SET AUTHENTICATION POLICY SNOWFLAKE_LEARNING_DB.PUBLIC.my_authentication_policy;

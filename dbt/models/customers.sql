@@ -9,4 +9,6 @@ SELECT
     r.r_name                                AS region
 FROM {{ source('tpch', 'customer') }} c
 LEFT JOIN {{ source('tpch', 'nation') }} n ON c.c_nationkey = n.n_nationkey
-LEFT JOIN {{ source('tpch', 'region') }} r ON n.n_regionkey = r.r_regionkey
+LEFT JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.region
+-- {{ source('tpch', 'region') }} 
+ r ON n.n_regionkey = r.r_regionkey

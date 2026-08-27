@@ -1,0 +1,9 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "Data engineering workflow plugin for the CoCo DE guide project",
+  "author": "me",
+  "skills": ["./skills"],
+  "agents": ["./agents"],
+  "hooks": "./hooks/hooks.json"
+}
