@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./hooks/validate-bash.sh",
+            "timeout": 10,
+            "statusMessage": "Checking for production dbt commands..."
+          }
+        ]
+      }
+    ]
+  }
+}
