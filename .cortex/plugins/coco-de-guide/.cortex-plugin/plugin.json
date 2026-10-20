@@ -1,0 +1,12 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "Skills, agents, and hooks for the CoCo data engineering guide dbt project.",
+  "author": {
+    "name": "Debbie Farney",
+    "email": "debbie.farney@samaritanministries.org"
+  },
+  "skills": "./skills",
+  "agents": "./agents",
+  "hooks": "./hooks/hooks.json"
+}
