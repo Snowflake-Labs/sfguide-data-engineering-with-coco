@@ -1,0 +1,56 @@
+name: dbt PR Review
+
+on:
+  pull_request:
+    paths:
+      - "dbt/models/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # Full history so the dbt-review agent can `git diff` against the PR base branch
+          fetch-depth: 0
+
+      - name: Configure Snowflake connection
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+        run: |
+          mkdir -p ~/.snowflake
+          cat > ~/.snowflake/connections.toml <<EOF
+          [default]
+          account = "${SNOWFLAKE_ACCOUNT}"
+          user = "${SNOWFLAKE_USER}"
+          password = "${SNOWFLAKE_PASSWORD}"
+          EOF
+          chmod 600 ~/.snowflake/connections.toml
+
+      - name: Install CoCo CLI
+        run: |
+          curl -LsS https://ai.snowflake.com/static/cc-scripts/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Run dbt-review agent
+        run: |
+          cortex --print "Use the dbt-review agent to review the changes in this PR" \
+            > review.md 2>/dev/null || true
+
+      - name: Post review as PR comment
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -s review.md ]; then
+            echo "_dbt-review produced no output. Check the workflow logs._" > review.md
+          fi
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file review.md

@@ -1,0 +1,27 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "Data engineering guide plugin for the TPCH dbt project on Snowflake",
+  "author": {
+    "name": "s w",
+    "email": "steven.white@samaritanministries.org"
+  },
+  "skills": ["./skills"],
+  "agents": "./agents",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\PROGRA~1\\Git\\bin\\bash.exe C:/Users/swhite/sfguide-data-engineering-with-coco/.cortex/plugins/coco-de-guide/hooks/validate-bash.sh",
+            "timeout": 10,
+            "enabled": true,
+            "statusMessage": "Checking for production dbt runs..."
+          }
+        ]
+      }
+    ]
+  }
+}

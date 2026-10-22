@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:/Program Files/Git/bin/bash.exe\" .cortex/plugins/coco-de-guide/hooks/validate-bash.sh",
+            "timeout": 10,
+            "enabled": true,
+            "statusMessage": "Checking for production dbt runs..."
+          }
+        ]
+      }
+    ]
+  }
+}
