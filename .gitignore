@@ -10,3 +10,9 @@ dbt/profiles.yml
 
 # Mac files
 .DS_Store
+
+# Local secrets and logs
+DEMO_PAT-token-secret.txt
+*-secret.txt
+logs/
+dbt/dbt/

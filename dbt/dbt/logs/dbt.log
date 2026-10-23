@@ -1,0 +1,24 @@
+==================== 2026-10-22T11:14:36.328407Z | 01a16351-ee9f-7862-96c0-48ef722a5110 ====================
+11:14:36.328670 [info ]: dbt 2.0.8
+11:14:36.329144 [info ]: Started loading project
+11:14:36.329445 [info ]: Finished loading project [  0.00s]
+11:14:36.329626 [error]: [IoError (dbt1001)]: Cannot open file C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: Failed to open file: C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: The system cannot find the file specified. (os error 2): The system cannot find the file specified. (os error 2)
+11:14:36.502283 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error [173ms]
+==================== 2026-10-22T11:15:34.370175Z | 01a16352-d15f-7430-9d90-b5f6d21cf261 ====================
+11:15:34.370365 [info ]: dbt 2.0.8
+11:15:34.370885 [info ]: Started loading project
+11:15:34.371145 [info ]: Finished loading project [  0.00s]
+11:15:34.371261 [error]: [IoError (dbt1001)]: Cannot open file C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: Failed to open file: C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: The system cannot find the file specified. (os error 2): The system cannot find the file specified. (os error 2)
+11:15:34.494559 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error [124ms]
+==================== 2026-10-22T11:28:25.437336Z | 01a1635e-955b-7232-a082-7004e32fddd8 ====================
+11:28:25.437492 [info ]: dbt 2.0.9
+11:28:25.437928 [info ]: Started loading project
+11:28:25.438223 [info ]: Finished loading project [  0.00s]
+11:28:25.438337 [error]: [IoError (dbt1001)]: Cannot open file C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: Failed to open file: C:\dev_projects\sfguide-data-engineering-with-coco\dbt\dbt\dbt_project.yml: The system cannot find the file specified. (os error 2): The system cannot find the file specified. (os error 2)
+11:28:25.557035 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error [119ms]
