@@ -1,0 +1,21 @@
+Reasoning for abnormality in training artifact: profiles.yml
+
+This file includes these lines of code:
+        prod:
+      type: snowflake
+      account: MYWNBLP-AM05349
+      user: SUPERGUY
+      password: <YOUR_PAT>
+      role: DEMO_ROLE
+      database: DEMO_DB
+      warehouse: DEMO_WH
+      schema: TPCH_TRANSFORMED
+      threads: 4
+
+I've included this additional code as a trouble shooting step when attempting to trigger
+the hooks created in the training. Without a production environment designated in this file, the
+commands to run something in production will fail and the hook will not trigger regardless of if
+the hook has been created properly.
+
+Dan assisted me in writing this (and CoCo assisted him probably), so it isn't my work necessarily.
+I include this note as justification for my training deviating from the Data Camp instructions.

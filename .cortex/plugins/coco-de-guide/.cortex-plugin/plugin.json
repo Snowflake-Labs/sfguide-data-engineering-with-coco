@@ -1,0 +1,11 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "dbt data engineering workflow for the TPCH_TRANSFORMED project: model scaffolding skill, dbt review subagent, and production safety hook.",
+  "author": {
+    "name": "Super Guy"
+  },
+  "skills": "./skills",
+  "agents": "./agents",
+  "hooks": "./hooks/hooks_revised.json"
+}
