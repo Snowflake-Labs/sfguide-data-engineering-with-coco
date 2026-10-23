@@ -1,0 +1,9 @@
+Reasoning for abnormality in training artifact: plugin.json and hooks_revised
+
+I've updated the hook to this custom written hook supplied by Dan Souther. Using this, he was able to circumvent
+the issues we'd experienced with hooks failing to prevent CoCo from deploying to prod. The original hook created in the
+training has been preserved as a txt file, but is not in use.
+
+The plugin was then edited to replace the reference to "./hooks/hooks.json" to look at the newly created hook file.
+
+These changes didn't appear to solve the issue and the hooks failed to stop CoCo from deploying to prod.

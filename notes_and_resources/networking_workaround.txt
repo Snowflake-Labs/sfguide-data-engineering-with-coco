@@ -1,0 +1,11 @@
+Explanation for training workaround: network policy limits
+
+When attempting to perform some actions, specifically the dbt build commands, I hit a snag in which
+the commands would failed due to a network policy. Even though my PAT was in the project, I was unable
+to continue with the training instructions until I edited the PAT after creation to enable a short term
+netork policy exception.
+
+The longest available exception window was only 24 hours.
+
+I'm not familiar with this governance feature, but I don't suspect it will be a problem when using our enterprise
+accounts.

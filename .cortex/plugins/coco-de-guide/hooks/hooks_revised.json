@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "write|edit|multi_edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "Write-Output 'PreToolUse hook fired: about to modify a file.'"
+          }
+        ]
+      },
+      {
+        "matcher": "bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$p = $input | ConvertFrom-Json; if ($p.tool_input.command -match '(?i)\\b(Remove-Item|Clear-Content|Clear-Disk|Format-Volume|rmdir|erase|rm|rd|del|ri|clc)\\b') { @{ decision = 'block'; reason = 'Destructive PowerShell command blocked by guardrail.'; systemMessage = 'Guardrail: blocked a destructive PowerShell command.' } | ConvertTo-Json -Compress; exit 0 }"
+          }
+        ]
+      }
+    ]
+  }
+}
+ 
+ 
