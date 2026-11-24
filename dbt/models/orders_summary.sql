@@ -10,6 +10,6 @@ SELECT
     SUM(l.l_extendedprice)                  AS total_extended_price,
     SUM(l.l_extendedprice * (1 - l.l_discount)) AS total_net_price,
     SUM(l.l_extendedprice * (1 - l.l_discount) * (1 + l.l_tax)) AS total_charged_price
-FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS o
-LEFT JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM l ON o.o_orderkey = l.l_orderkey
+FROM {{ source('tpch', 'orders') }} o
+LEFT JOIN {{ source('tpch', 'lineitem') }} l ON o.o_orderkey = l.l_orderkey
 GROUP BY 1, 2, 3, 4, 5, 6
