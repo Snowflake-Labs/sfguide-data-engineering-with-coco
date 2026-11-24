@@ -1,0 +1,12 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "dbt data engineering workflow for the TPC-H transformation project",
+  "author": {
+    "name": "nicky rucker",
+    "email": "nicky.rucker@ucdenver.edu"
+  },
+  "skills": "./skills",
+  "agents": "./agents",
+  "hooks": "./hooks/hooks.json"
+}
